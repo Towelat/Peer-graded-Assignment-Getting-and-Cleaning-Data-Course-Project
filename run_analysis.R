@@ -46,7 +46,7 @@ combine_data2$subject_id <- as.factor(combine_data$subject_id)
 combine_data2$activity <- as.factor(combine_data$activity)
 
 
-new_data<- combine_data %>% group_by(activity, subject_id)%>% summarise_each(mean)
+new_data<- combine_data2 %>% group_by(activity, subject_id)%>% summarise_each(mean)
 new_data
 
 write.table(new_data, file = "tidy_data.txt", row.name= FALSE)
