@@ -44,12 +44,10 @@ head(combine_data2)
 
 #From the data set in step 4, creates a second, independent tidy data set with the 
 #average of each variable for each activity and each subject.
+combine_data2<-cbind(combine_data2,combine_data$subject_id,combine_data$activity)
+head(combine_data2)
 
-combine_data2$subject_id <- combine_data$subject_id
-combine_data2$activity <- combine_data$activity
-
-
-new_data<- combine_data2 %>% group_by(activity, subject_id)%>% summarise_each(mean)
+new_data<- combine_data2 %>% group_by(combine_data$activity,combine_data$subject_id)%>% summarise_each(mean)
 new_data
 
 write.table(new_data, file = "tidy_data.txt", row.name= FALSE)
